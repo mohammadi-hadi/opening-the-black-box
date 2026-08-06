@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Opening the Black Box · a free self-paced summer school in explainable AI</title>
+  <meta name="description" content="A free, self-paced summer school in explainable AI for large language models. Five days, thirteen hands-on labs that run in your browser on a free GPU.">
+  <meta property="og:title" content="Opening the Black Box">
+  <meta property="og:description" content="A free, self-paced summer school in explainable AI for large language models. Thirteen hands-on labs, free, in your browser.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1A1C1E; --rust: #9A3412; --teal: #0D9488; --amber: #F59E0B; --rose: #E11D48;
+      --stone: #A8A29E; --graphite: #57534E; --paper: #FFFFFF; --surface: #FAFAF9; --rule: #E7E5E4;
+      --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --serif: "Source Serif 4", Georgia, serif;
+      --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--paper);
+      line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: var(--teal); }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 1.25rem; }
+    .topbar { border-bottom: 1px solid var(--rule); }
+    .topbar .wrap { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; }
+    .wordmark { font-family: var(--serif); font-weight: 700; font-size: 1.05rem; color: var(--ink); text-decoration: none; }
+    .topbar nav a { font-size: .9rem; color: var(--graphite); text-decoration: none; margin-left: 1.1rem; }
+    .topbar nav a:hover { color: var(--teal); }
+
+    .hero { padding: 3.4rem 0 2.2rem; }
+    .kicker { font-family: var(--mono); font-size: .74rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--teal); display: block; margin-bottom: .8rem; }
+    .hero h1 { font-family: var(--serif); font-size: 3rem; line-height: 1.08; margin: 0 0 .5rem; letter-spacing: -.01em; }
+    .hero .sub { font-family: var(--serif); font-style: italic; color: var(--rust); font-size: 1.25rem; margin: 0 0 1.3rem; }
+    .hero .lede { font-size: 1.12rem; max-width: 60ch; color: #33312f; margin: 0 0 1.6rem; }
+    .badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.8rem; }
+    .badge { font-family: var(--mono); font-size: .74rem; padding: .35rem .7rem; border-radius: 999px;
+      background: var(--surface); border: 1px solid var(--rule); color: var(--graphite); }
+    .badge b { color: var(--rust); font-weight: 600; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: .7rem; }
+    .btn { display: inline-block; padding: .7rem 1.3rem; border-radius: 8px; font-weight: 600; font-size: .95rem;
+      text-decoration: none; border: 1px solid transparent; }
+    .btn.primary { background: var(--rust); color: #fff; }
+    .btn.primary:hover { background: #7f2a0e; }
+    .btn.ghost { background: var(--paper); color: var(--rust); border-color: var(--rule); }
+    .btn.ghost:hover { border-color: var(--rust); }
+
+    section { padding: 2.2rem 0; border-top: 1px solid var(--rule); }
+    h2.sec { font-family: var(--serif); font-size: 1.6rem; margin: 0 0 .4rem; }
+    .sec-lede { color: var(--graphite); max-width: 62ch; margin: 0 0 1.6rem; }
+
+    .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .how .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 1.2rem; }
+    .how .card .n { font-family: var(--mono); color: var(--teal); font-size: .8rem; }
+    .how .card h3 { font-size: 1rem; margin: .3rem 0 .4rem; }
+    .how .card p { font-size: .9rem; color: #46433f; margin: 0; }
+
+    .day { border: 1px solid var(--rule); border-radius: 12px; padding: 1.4rem 1.5rem; margin-bottom: 1.1rem;
+      background: var(--paper); }
+    .day .head { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap; margin-bottom: .5rem; }
+    .day .tag { font-family: var(--mono); font-size: .74rem; color: #fff; background: var(--rust);
+      padding: .2rem .6rem; border-radius: 6px; }
+    .day h3 { font-family: var(--serif); font-size: 1.3rem; margin: 0; }
+    .day .lectures { color: var(--graphite); font-size: .92rem; margin: 0 0 1rem; }
+    .labs { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+    .lab { border-left: 3px solid var(--teal); background: var(--surface); border-radius: 0 8px 8px 0;
+      padding: .7rem .9rem; }
+    .lab .name { font-family: var(--mono); font-size: .78rem; color: var(--rust); }
+    .lab p { font-size: .86rem; margin: .25rem 0 .5rem; color: #46433f; }
+    .lab a.colab { font-size: .8rem; font-weight: 600; text-decoration: none; color: var(--teal); }
+    .lab a.colab:hover { text-decoration: underline; }
+    .lab.full { grid-column: 1 / -1; }
+
+    .note { background: #FEF3EC; border: 1px solid #F4D9C9; border-radius: 10px; padding: 1rem 1.2rem;
+      font-size: .9rem; color: #6b3b23; }
+    .note b { color: var(--rust); }
+
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+    .split .box { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 1.3rem 1.4rem; }
+    .split h3 { margin: 0 0 .5rem; font-size: 1.05rem; }
+    .split p { font-size: .92rem; color: #46433f; margin: 0 0 .6rem; }
+
+    footer { border-top: 1px solid var(--rule); padding: 2rem 0 3rem; color: var(--graphite); font-size: .86rem; }
+    footer .mono { font-family: var(--mono); font-size: .74rem; color: var(--stone); margin-top: .6rem; }
+
+    @media (max-width: 720px) {
+      .hero h1 { font-size: 2.2rem; }
+      .how, .labs, .split { grid-template-columns: 1fr; }
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --ink: #F5F5F4; --paper: #1A1C1E; --surface: #24262a; --rule: #3a3d42;
+        --graphite: #C7C3BE; --stone: #8A857E; }
+      body { background: var(--paper); }
+      .btn.ghost { background: transparent; }
+      .note { background: #2a211b; border-color: #4a382b; color: #e8c9b3; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="wordmark" href="https://mohammadi.cv/">Hadi Mohammadi</a>
+      <nav>
+        <a href="https://mohammadi.cv/research/">Research</a>
+        <a href="https://github.com/mohammadi-hadi/hands-on-xai-labs">Labs</a>
+        <a href="https://mohammadi.cv/">Site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero" style="border-top:none;">
+        <span class="kicker">Free · self-paced · runs in your browser</span>
+        <h1>Opening the Black Box</h1>
+        <p class="sub">A hands-on course in explainable AI for large language models</p>
+        <p class="lede">Five days, thirteen labs. Learn to interpret, evaluate, and trust language models:
+          feature attribution, attention analysis, probing, chain-of-thought faithfulness, and mechanistic
+          interpretability. Every lab runs on a free Colab GPU in twenty minutes or less. No installs, no
+          cost, no cluster. Just a browser and a Google account.</p>
+        <div class="badges">
+          <span class="badge"><b>13</b> hands-on labs</span>
+          <span class="badge"><b>&euro;0</b> to take</span>
+          <span class="badge"><b>&lt;20 min</b> per lab on a free GPU</span>
+          <span class="badge">version-pinned, CI-tested weekly</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary" href="#curriculum">Start the free course</a>
+          <a class="btn ghost" href="https://github.com/mohammadi-hadi/hands-on-xai-labs">Get the labs on GitHub</a>
+        </div>
+      </section>
+    </div>
+
+    <div class="wrap">
+      <section>
+        <h2 class="sec">How the free version works</h2>
+        <p class="sec-lede">This is the self-paced edition of a five-day summer school. The lectures point you
+          at the ideas; the labs are where you do the work. All thirteen notebooks are public and open in one
+          click.</p>
+        <div class="how">
+          <div class="card">
+            <span class="n">01</span>
+            <h3>Open a lab</h3>
+            <p>Each day below links its notebooks straight into Google Colab. Click, then choose Runtime, Run all.</p>
+          </div>
+          <div class="card">
+            <span class="n">02</span>
+            <h3>Read the outputs</h3>
+            <p>The interesting part is not running the cell, it is reading what it prints. Each lab tells you the
+              number to look for and why it matters.</p>
+          </div>
+          <div class="card">
+            <span class="n">03</span>
+            <h3>Do the exercise</h3>
+            <p>Every notebook ends with a scaffolded exercise. That is where the method becomes yours.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="curriculum">
+        <h2 class="sec">The five days</h2>
+        <p class="sec-lede">Work through them in order, one per sitting, or jump to the instrument you need. The
+          labs build on a shared example, but each one stands alone.</p>
+
+        <div class="day">
+          <div class="head"><span class="tag">Day 1</span><h3>Why models need explaining</h3></div>
+          <p class="lectures">Shortcut learning and the Clever Hans problem, then a working map of every
+            explanation method family. Where the field is, and why accuracy is not understanding.</p>
+          <div class="labs">
+            <div class="lab">
+              <span class="name">ch01 · no GPU · &lt; 1 min</span>
+              <p>Two classifiers at 95% accuracy. One collapses to a coin flip after deployment. Watch the
+                ten-line explanation that would have caught it.</p>
+              <a class="colab" href="https://colab.research.google.com/github/mohammadi-hadi/hands-on-xai-labs/blob/main/notebooks/ch01-why-explainability.ipynb">Open in Colab &rarr;</a>
+            </div>
+            <div class="lab">
+              <span class="name">ch02 · ~5 min</span>
+              <p>One prediction, explained five different ways (LIME, SHAP, Integrated Gradients, attention, a
+                self-explanation). See how little they agree.</p>
+              <a class="colab" href="https://colab.research.google.com/github/mohammadi-hadi/hands-on-xai-labs/blob/main/notebooks/ch02-map-of-the-territory.ipynb">Open in Colab &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="head"><span class="tag">Day 2</span><h3>The instruments</h3></div>
+          <p class="lectures">Feature attribution done right (LIME, SHAP, Integrated Gradients), then attention
+            analysis and its limits. The two most popular instruments, and where each one lies.</p>
+          <div class="labs">
+            <div class="lab">
+              <span class="name">ch04 · 5 to 10 min</span>
+              <p>LIME, SHAP, and Integrated Gradients on the same ten inputs. They rank the evidence
+                differently. Which do you trust?</p>
+              <a class="colab" href="https://colab.research.google.com/github/mohammadi-hadi/hands-on-xai-labs/blob/main/notebooks/ch04-feature-attribution.ipynb">Open in Colab &rarr;</a>
+            </div>
+            <div class="lab">
+              <span class="name">ch05 · ~5 min</span>
+              <p>Attention maps on trial: aggregation traps, rollout, corroboration with gradients, head
+                ablation. Attention and attribution rank tokens almost independently.</p>
+              <a class="colab" href="https://colab.research.google.com/github/mohammadi-hadi/hands-on-xai-labs/blob/main/notebooks/ch05-attention.ipynb">Open in Colab &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="head"><span class="tag">Day 3</span><h3>Build it, break it</h3></div>
+          <p class="lectures">What a model knows versus what it uses: probing, counterfactuals, concept
+            directions. Then explanation-guided attacks: how a faithful explanation becomes a weapon.</p>
+          <div class="labs">
+            <div class="lab">
+              <span class="name">ch06 · 5 to 10 min</span>
+              <p>Layer-wise probes, greedy counterfactual edits, and a concept direction. Three ways to read
+                what a model represents.</p>
+              <a class="colab" href="https://colab.research.google.com/github/mohammadi-hadi/hands-on-xai-labs/blob/main/notebooks/ch06-probing-counterfactuals-concepts.ipynb">Open in Colab &rarr;</a>
+            </div>
+            <div class="lab">
+              <span class="name">ch07 · no GPU · ~2 min</span>
+              <p>Build a transparent AI-text detector, then attack it through its own explanations. Guided edits
+                flip its verdict far more often than random ones.</p>
+              <a class="colab" href="https://colab.research.google.com/github/mohammadi-hadi/hands-on-xai-labs/blob/main/notebooks/ch07-build-it-break-it.ipynb">Open in Colab &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="head"><span class="tag">Day 4</span><h3>Trust and evaluation</h3></div>
+          <p class="lectures">How to score an explanation: random floors, deletion tests, confidence intervals,
+            and auditing an LLM judge. Then whether chain-of-thought reasoning is actually faithful.</p>
+          <div class="labs">
+            <div class="lab">
+              <span class="name">ch08 · 5 to 10 min</span>
+              <p>A deletion and insertion faithfulness harness with bootstrap intervals, plus an LLM-judge audit
+                that follows the answer's position instead of its content.</p>
+              <a class="colab" href="https://colab.research.google.com/github/mohammadi-hadi/hands-on-xai-labs/blob/main/notebooks/ch08-evaluating-explanations.ipynb">Open in Colab &rarr;</a>
+            </div>
+            <div class="lab">
+              <span class="name">ch09 · 5 to 10 min</span>
+              <p>A test bench for chain-of-thought: truncation, mistake injection, planted hints. Catch a model
+                that changes its answer for a hint it never mentions.</p>
+              <a class="colab" href="https://colab.research.google.com/github/mohammadi-hadi/hands-on-xai-labs/blob/main/notebooks/ch09-cot-faithfulness.ipynb">Open in Colab &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="day">
+          <div class="head"><span class="tag">Day 5</span><h3>Inside the model, into the world</h3></div>
+          <p class="lectures">Mechanistic interpretability: logit lens, activation patching, sparse autoencoders,
+            steering. Then explainability in production and the EU AI Act, and a plan for Monday.</p>
+          <div class="labs">
+            <div class="lab full">
+              <span class="name">ch10 · 6 to 9 min · plus optional advanced labs</span>
+              <p>Induction heads, activation patching, SAE features, and steering on GPT-2 small. When the top
+                rung of the ladder is worth the climb. The repository also carries labs on behavioral auditing
+                (ch11), training for explainability (ch12), and a fully instrumented production RAG assistant
+                (ch13) for when you want more.</p>
+              <a class="colab" href="https://colab.research.google.com/github/mohammadi-hadi/hands-on-xai-labs/blob/main/notebooks/ch10-mechanistic-interpretability.ipynb">Open in Colab &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <p class="note" style="margin-top:1.4rem;"><b>A note on content.</b> The labs on days 2 to 4 study a
+          hate-speech classifier using a public research dataset of real tweets, shown as they are. The
+          examples appear as data under analysis, not as speech anyone endorses; sanitizing them would change
+          what the model sees. If you would rather not work with that material, the day-5 sentiment lab teaches
+          the same methods on gentler text.</p>
+      </section>
+
+      <section>
+        <h2 class="sec">Where this comes from</h2>
+        <div class="split">
+          <div class="box">
+            <h3>The book</h3>
+            <p>This course is the teaching form of <em>Hands-On Explainable AI: Interpreting, Evaluating, and
+              Trusting Large Language Models</em>. Every number the labs print was produced by these same
+              notebooks; the book is written from them.</p>
+            <p><a href="https://mohammadi.cv/">More about the book and author &rarr;</a></p>
+          </div>
+          <div class="box">
+            <h3>The labs are yours to keep</h3>
+            <p>All thirteen notebooks are open source under the MIT License, version-pinned, and archived with a
+              DOI so you can cite them. Fork them, teach from them, build on them.</p>
+            <p><a href="https://github.com/mohammadi-hadi/hands-on-xai-labs">github.com/mohammadi-hadi/hands-on-xai-labs</a>
+              &middot; <a href="https://doi.org/10.5281/zenodo.21804605">DOI</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec">Bring the full school to your institution</h2>
+        <p class="sec-lede">The instructor-led version is a five-day school: morning lectures, afternoon labs, a
+          red-team challenge, and a capstone in which teams audit a model of their own and present the findings.
+          It has run as a complete package (ten lecture decks, a syllabus, run sheets, and organizer documents)
+          and can be hosted at a university or company.</p>
+        <a class="btn primary" href="https://mohammadi.cv/">Get in touch &rarr;</a>
+      </section>
+    </div>
+
+    <footer>
+      <div class="wrap">
+        Built and taught by <a href="https://mohammadi.cv/">Hadi Mohammadi</a>, who researches explainable NLP at
+        Utrecht University. Free to take, free to share.
+        <div class="mono">© 2026 Hadi Mohammadi · Opening the Black Box · the lab notebooks are MIT licensed · mohammadi.cv</div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
