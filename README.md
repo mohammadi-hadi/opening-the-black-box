@@ -1,6 +1,8 @@
 # Opening the Black Box
 
-A free, self-paced course in explainable AI for large language models, by [Hadi Mohammadi](https://mohammadi.cv).
+[![DOI](https://zenodo.org/badge/1325906591.svg)](https://doi.org/10.5281/zenodo.21835864)
+
+A free, self-paced course in explainable AI for large language models, by [Hadi Mohammadi](https://mohammadi.cv). Cite it via DOI [10.5281/zenodo.21835864](https://doi.org/10.5281/zenodo.21835864).
 
 - **Take the course:** https://mohammadi.cv/opening-the-black-box/
 - **Lab notebooks** (MIT licensed, separate repository): https://github.com/mohammadi-hadi/hands-on-xai-labs
