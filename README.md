@@ -1,6 +1,7 @@
 # Opening the Black Box
 
 [![DOI](https://zenodo.org/badge/1325906591.svg)](https://doi.org/10.5281/zenodo.21835864)
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg)](LICENSE)
 
 A free, self-paced course in explainable AI for large language models, by [Hadi Mohammadi](https://mohammadi.cv). Cite it via DOI [10.5281/zenodo.21835864](https://doi.org/10.5281/zenodo.21835864).
 
