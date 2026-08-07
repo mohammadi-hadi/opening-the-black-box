@@ -81,7 +81,17 @@
     .split { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
     .split .box { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 1.3rem 1.4rem; }
     .split h3 { margin: 0 0 .5rem; font-size: 1.05rem; }
-    .split p { font-size: .92rem; color: #46433f; margin: 0 0 .6rem; }
+    .split p { font-size: .92rem; color: var(--graphite); margin: 0 0 .6rem; }
+
+    .tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; }
+    .tier { border: 1px solid var(--rule); border-radius: 10px; padding: 1rem 1.1rem; background: var(--paper); }
+    .tier.here { border-color: var(--rust); box-shadow: inset 0 0 0 1px var(--rust); background: var(--surface); }
+    .tier .t-tag { font-family: var(--mono); font-size: .66rem; letter-spacing: .04em; color: var(--teal); text-transform: uppercase; }
+    .tier.here .t-tag { color: var(--rust); }
+    .tier h3 { font-family: var(--serif); font-size: 1.05rem; margin: .35rem 0 .4rem; }
+    .tier p { font-size: .84rem; color: var(--graphite); margin: 0 0 .4rem; line-height: 1.5; }
+    .tier .t-link { font-size: .8rem; }
+    @media (max-width: 720px) { .tiers { grid-template-columns: 1fr 1fr; } }
 
     footer { border-top: 1px solid var(--rule); padding: 2rem 0 3rem; color: var(--graphite); font-size: .86rem; }
     footer .mono { font-family: var(--mono); font-size: .74rem; color: var(--stone); margin-top: .6rem; }
@@ -269,32 +279,47 @@
       </section>
 
       <section>
-        <h2 class="sec">Where this comes from</h2>
-        <div class="split">
-          <div class="box">
+        <h2 class="sec">How it all fits together</h2>
+        <p class="sec-lede">This free course is one rung of a larger ladder. Each rung stands alone; together
+          they take you from the idea, to the code, to running it at work.</p>
+        <div class="tiers">
+          <div class="tier">
+            <span class="t-tag">The reference</span>
             <h3>The book</h3>
-            <p>This course is the teaching form of <em>Hands-On Explainable AI: Interpreting, Evaluating, and
-              Trusting Large Language Models</em>. Every number the labs print was produced by these same
-              notebooks; the book is written from them.</p>
-            <p><a href="https://mohammadi.cv/">More about the book and author &rarr;</a></p>
+            <p><em>Hands-On Explainable AI</em>. The full treatment, written lab-first: every number in it was
+              produced by the notebooks in the next rung.</p>
+            <p class="t-link"><a href="https://mohammadi.cv/">about the book &amp; author &rarr;</a></p>
           </div>
-          <div class="box">
-            <h3>The labs are yours to keep</h3>
-            <p>All thirteen notebooks are open source under the MIT License, version-pinned, and archived with a
-              DOI so you can cite them. Fork them, teach from them, build on them.</p>
-            <p><a href="https://github.com/mohammadi-hadi/hands-on-xai-labs">github.com/mohammadi-hadi/hands-on-xai-labs</a>
+          <div class="tier">
+            <span class="t-tag">The code &middot; free, MIT</span>
+            <h3>The labs</h3>
+            <p>Thirteen open-source notebooks you can fork, cite, and build on. The book's evidence, runnable.</p>
+            <p class="t-link"><a href="https://github.com/mohammadi-hadi/hands-on-xai-labs">on GitHub</a>
               &middot; <a href="https://doi.org/10.5281/zenodo.21804605">DOI</a></p>
+          </div>
+          <div class="tier here">
+            <span class="t-tag">You are here &middot; free</span>
+            <h3>This self-paced course</h3>
+            <p>A guided five-day path through the labs, with the result to look for in each. Free, in your
+              browser.</p>
+          </div>
+          <div class="tier">
+            <span class="t-tag">For institutions</span>
+            <h3>The instructor-led school</h3>
+            <p>The full five-day experience: lectures, a red-team challenge, and a capstone. Hosted at your
+              university or company.</p>
+            <p class="t-link"><a href="#bring">bring it to your institution &darr;</a></p>
           </div>
         </div>
       </section>
 
-      <section>
+      <section id="bring">
         <h2 class="sec">Bring the full school to your institution</h2>
         <p class="sec-lede">The instructor-led version is a five-day school: morning lectures, afternoon labs, a
           red-team challenge, and a capstone in which teams audit a model of their own and present the findings.
-          It has run as a complete package (ten lecture decks, a syllabus, run sheets, and organizer documents)
-          and can be hosted at a university or company.</p>
-        <a class="btn primary" href="https://mohammadi.cv/">Get in touch &rarr;</a>
+          It exists as a complete package (ten lecture decks, a syllabus, run sheets, a university proposal, and
+          organizer documents) and can be hosted at a university or company.</p>
+        <a class="btn primary" href="mailto:hadi.mohammadi@outlook.com?subject=Opening%20the%20Black%20Box%20summer%20school">Email me about hosting it &rarr;</a>
       </section>
     </div>
 
