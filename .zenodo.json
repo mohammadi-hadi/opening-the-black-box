@@ -1,0 +1,28 @@
+{
+  "title": "Opening the Black Box: a free, self-paced course in explainable AI for large language models",
+  "description": "A free, self-paced course in explainable AI for large language models. Five days of guided material built on thirteen open lab notebooks: attribution, attention analysis, probing, counterfactuals, adversarial testing, evaluation of explanations, chain-of-thought faithfulness, and mechanistic interpretability. The course page is served from this repository. The lab notebooks live in a separate MIT-licensed repository (10.5281/zenodo.21804605).",
+  "creators": [
+    {
+      "name": "Mohammadi, Hadi",
+      "orcid": "0000-0003-0860-9200",
+      "affiliation": "Utrecht University"
+    }
+  ],
+  "license": "cc-by-nc-nd-4.0",
+  "upload_type": "lesson",
+  "keywords": [
+    "explainable AI",
+    "XAI",
+    "interpretability",
+    "large language models",
+    "NLP",
+    "open education"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.21804605",
+      "relation": "references",
+      "resource_type": "software"
+    }
+  ]
+}
