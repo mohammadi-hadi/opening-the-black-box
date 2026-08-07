@@ -1,11 +1,37 @@
 cff-version: 1.2.0
-message: "If you use these materials, please cite them as below."
-title: "Opening the Black Box — Summer School Materials"
+message: "If you use this course in your teaching or research, please cite it as below."
+title: "Opening the Black Box: a free, self-paced course in explainable AI for large language models"
 type: software
 authors:
   - family-names: Mohammadi
     given-names: Hadi
     orcid: "https://orcid.org/0000-0003-0860-9200"
     affiliation: "Utrecht University"
+doi: 10.5281/zenodo.21835865
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21835864
+    description: "DOI for all versions; resolves to the latest release"
+license: CC-BY-NC-ND-4.0
 repository-code: "https://github.com/mohammadi-hadi/opening-the-black-box"
-abstract: "Free preview and encrypted materials bundle for the Opening the Black Box summer school on explainable NLP."
+url: "https://mohammadi.cv/opening-the-black-box/"
+version: 1.0.0
+date-released: "2026-08-07"
+abstract: "A free, self-paced course in explainable AI for large language models. Five days of guided material built on thirteen open lab notebooks: feature attribution, attention analysis, probing and counterfactuals, explanation-guided attacks, evaluation of explanations, chain-of-thought faithfulness, and mechanistic interpretability."
+keywords:
+  - explainable AI
+  - interpretability
+  - large language models
+  - natural language processing
+  - open education
+references:
+  - type: software
+    title: "Hands-On Explainable AI: companion labs"
+    authors:
+      - family-names: Mohammadi
+        given-names: Hadi
+        orcid: "https://orcid.org/0000-0003-0860-9200"
+        affiliation: "Utrecht University"
+    doi: "10.5281/zenodo.21804605"
+    repository-code: "https://github.com/mohammadi-hadi/hands-on-xai-labs"
+    license: MIT
